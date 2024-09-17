@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebRTC Camera</title>
+</head>
+<body>
+    <h1>Camera Preview</h1>
+    <video id="video" width="640" height="480" autoplay></video>
+
+    <script>
+        // Mendapatkan akses ke kamera
+        async function startCamera() {
+            try {
+                const video = document.getElementById('video');
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                video.srcObject = stream;
+            } catch (error) {
+                console.error('Gagal mengakses kamera:', error);
+            }
+        }
+
+        // Panggil fungsi untuk memulai kamera saat halaman dimuat
+        window.onload = startCamera;
+    </script>
+</body>
+</html>
